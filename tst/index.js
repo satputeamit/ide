@@ -137,8 +137,8 @@ class obj_selector{
               var test = document.getElementById($(this).attr('id'))
               var pos = test.getBoundingClientRect();
               console.log("pos dn :",pos);
-              var x = pos.left+7 ,
-                  y = pos.top +7;
+              var x = pos.left ,
+                  y = pos.top ;
               console.log("X_Y :",x,y);
               x1 = x
               y1 = y
@@ -153,7 +153,7 @@ class obj_selector{
                   var test = document.getElementById($(this).attr('id'))
                   var pos = test.getBoundingClientRect();
                   // console.log("pos up:",pos);
-                  var x = pos.left+7 , y = pos.top +7;
+                  var x = pos.left, y = pos.top ;
                   // console.log("X_Y :",x,y);
                   x2 = x
                   y2 = y
@@ -175,6 +175,7 @@ class obj_selector{
 
 
 // ---------------------------test--------------------------------
+
 var b= new ip_box_element()
 b.box_move(0,0)
 
@@ -185,14 +186,30 @@ var x = pos.left + pos.width/2, y = pos.top + pos.height/2;
 var b1= new ip_box_element()
 b1.box_move(100,100)
 
+
+
 // var pth = new path_line()
 var obj_sel = new obj_selector()
 // var ids = obj_sel.find_ids()
 // console.log(ids);
+var id1 ,id2;
+
+$(this).mousedown(function(event){
+    window.id1 = event.target.id;
+});
+
+$(this).mouseup(function(event){
+  id2 = event.target.id;
+  console.log("ids====",window.id1,id2);
+  $("#"+window.id1).connectable(id2).setLineColor("#5D4037");
+});
+
+
 
 function callback(){
-  var c1 = b.update_up()
-  var c2 = b1.update_down()
+
+  // var c1 = b.update_up()
+  // var c2 = b1.update_down()
 
   // pth.update(c1[0],c1[1],c2[0],c2[1])
   // obj_sel.update()
